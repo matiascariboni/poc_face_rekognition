@@ -44,7 +44,7 @@ jobs:
 
       - name: Deployment on EC2
         id: deployment
-        uses: matiascariboni/action-deployer@v1.0.0
+        uses: matiascariboni/action-deployer@v1.0.3
         with:
           METHOD: ${{ env.METHOD }}
           EC2_IP: ${{ secrets.EC2_IP }}
