@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition POC - Global Smart IoT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Face Recognition POC</h1>
+                <p class="subtitle">Powered by AWS Rekognition</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="password">Access Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-secondary btn-login">Access System</button>
+                <div id="loginError" class="login-error" style="display: none;"></div>
+            </form>
+            <div class="login-footer">
+                <span>Powered by</span>
+                <img src="assets/logo.png" alt="Global Smart IoT">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application (hidden by default) -->
+    <div id="mainApp" class="container" style="display: none;">
+        <header>
+            <h1>Face Recognition POC</h1>
+            <p class="subtitle">Powered by AWS Rekognition</p>
+        </header>
+
+        <!-- Main content with two columns -->
+        <div class="content-wrapper">
+            <!-- Left side - Video and controls -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+
+                <div class="controls">
+                    <button id="toggleBtn" class="btn btn-secondary">Start Camera & Analysis</button>
+                </div>
+            </div>
+
+            <!-- Right side - Results -->
+            <div class="results-section">
+                <div class="results">
+                    <div class="results-header">
+                        <h2>Analysis Results</h2>
+                    </div>
+                    <div id="resultsContent" class="results-content">
+                        <p class="placeholder">Start the camera to begin facial analysis...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Powered by Global Smart (shown only in main app) -->
+    <div id="poweredBy" class="powered-by" style="display: none;">
+        <span>Powered by</span>
+        <img src="assets/logo.png" alt="Global Smart IoT">
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
