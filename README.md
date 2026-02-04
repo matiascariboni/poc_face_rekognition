@@ -162,9 +162,6 @@ export const env = {
             rekognition: {
                 COLLECTION_ID: 'faces-collection',
                 FACE_MATCH_THRESHOLD: 80 // Minimum similarity % for match
-            },
-            s3: {
-                BUCKET_NAME: 'your-s3-bucket-name'
             }
         }
     },

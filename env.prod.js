@@ -1,17 +1,14 @@
 export const env = {
     aws: {
-        REGION: '{REGION}',
+        REGION: '{AWS_REGION}',
         credentials: {
-            ACCESS_KEY_ID: '{ACCESS_KEY_ID}',
-            SECRET_ACCESS_KEY: '{SECRET_ACCESS_KEY}'
+            ACCESS_KEY_ID: '{AWS_ACCESS_KEY_ID}',
+            SECRET_ACCESS_KEY: '{AWS_SECRET_ACCESS_KEY}'
         },
         services: {
             rekognition: {
-                COLLECTION_ID: '{COLLECTION_ID}',
+                COLLECTION_ID: '{REKOGNITION_COLLECTION_ID}',
                 FACE_MATCH_THRESHOLD: 80
-            },
-            s3: {
-                BUCKET_NAME: '{BUCKET_NAME}'
             }
         }
     },
