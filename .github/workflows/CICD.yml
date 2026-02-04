@@ -1,0 +1,56 @@
+name: CICD
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deployment:
+    name: ${{ github.ref_name }} CICD  - Push by ${{ github.actor }}
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ${{ github.event.repository.name }}
+      IMAGE_ARCH: "linux/arm64"
+      ENV_FILE_IN: "./env.prod.js"
+      ENV_FILE_OUT: "./env.js"
+      COMPOSE_NAME: "poc_face_rekognition"
+      METHOD: "EC2"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Variable allocation & CLOUDFRONT_DIST_ID
+        id: variables_allocation
+        uses: matiascariboni/action-variables_allocation@v1.2.0
+        with:
+          env_file_in: ${{ env.ENV_FILE_IN }}
+          env_file_out: ${{ env.ENV_FILE_OUT }}
+          repo_vars: ${{ toJson(vars) }}
+          repo_secrets: ${{ toJson(secrets) }}
+
+      - name: Docker preparation & build
+        id: dockerization
+        uses: matiascariboni/action-dockerization@v2.0.0
+        with:
+          IMAGE_ARCH: ${{ env.IMAGE_ARCH }}
+          COMPOSE_NAME: ${{ env.COMPOSE_NAME }}
+
+      - name: Deployment on EC2
+        id: deployment
+        uses: matiascariboni/action-deployer@v1.0.0
+        with:
+          METHOD: ${{ env.METHOD }}
+          EC2_IP: ${{ secrets.EC2_IP }}
+          EC2_USER: ${{secrets.EC2_USER}}
+          EC2_KEY: ${{ secrets.EC2_KEY }}
+          IMAGE_NAME: ${{ steps.dockerization.outputs.IMAGE_NAME }}
+          COMPOSE_PORTS: ${{ steps.dockerization.outputs.COMPOSE_PORTS }}
+          COMPOSE_NETWORKS: ${{ steps.dockerization.outputs.COMPOSE_NETWORKS }}
+          COMPOSE_FILE_NAME: ${{ steps.dockerization.outputs.COMPOSE_FILE_NAME }}
