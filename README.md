@@ -1,5 +1,3 @@
-![Global Smart IoT Banner](./public/assets/logo.png)
-
 # 🎭 Face Recognition POC - AWS Rekognition
 
 Proof of Concept for real-time facial recognition and analysis using AWS Rekognition, developed by Global Smart IoT.
