@@ -126,7 +126,7 @@ flowchart TB
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/Global-Smart-IoT/poc_face_rekognition.git
+git clone https://github.com/matiascariboni/poc_face_rekognition.git
 cd poc_face_rekognition
 ```
 
@@ -449,31 +449,22 @@ The application includes comprehensive logging. Check:
 
 ## 🤝 Contributing
 
-This is a proof of concept for internal use at Global Smart IoT. For questions or improvements, contact the development team.
+This is a proof of concept. For questions or improvements, contact me.
 
 ---
 
 ## 📄 License
 
-Copyright © 2026 Global Smart IoT. All rights reserved.
+Matías Cariboni. All rights reserved.
 
-This is proprietary software developed for internal proof of concept purposes.
+This is proprietary software developed for proof of concept purposes.
 
 ---
 
 ## 👥 Authors
 
-**Global Smart IoT Development Team**
-- Website: [globalsmartiot.es](https://globalsmartiot.es)
-- Email: info@globalsmartiot.es
-
----
-
-## 🙏 Acknowledgments
-
-- **AWS Rekognition** for facial recognition capabilities
-- **Global Smart IoT** for design system and branding
-- Built with ❤️ using Node.js and Express
+**Built with ❤️ using Node.js and Express by Matías Cariboni**
+- Email: mcariboni@icloud.com
 
 ---
 
